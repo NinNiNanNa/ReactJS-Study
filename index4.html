@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    const Title = () => (
+      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        Hello, I'm a h3
+      </h3>
+    );
+    const Button = () => (
+      <button
+        style={{
+          backgroundColor: "tomato",
+        }}
+        onClick={() => console.log("i'm clicked")}
+      >
+        Click me
+      </button>
+    );
+    /*
+    const h3 = React.createElement(
+      "h3",
+      {
+        id: "title",
+        onMouseEnter: () => console.log("mouse enter")
+      },
+      "Hello, I'm a h3"
+    );
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("i'm clicked"),
+        style: {
+          backgroundColor: "tomato"
+        }
+      },
+      "Click me"
+    );
+    const container = React.createElement("div", null, [Title, Button]);
+    */
+    const Container = () => (
+      <div>
+        <Title />
+        <Button />
+      </div>
+    );
+    ReactDOM.render(<Container />, root);
+  </script>
+</html>
+<!-- 
+#2.5 ~ #2.6 JSX
+
+  4. JSX : Javascript를 확장한 문법 (어플리케이션을 여러가지 작은 요소로 나누어 관리할 수 있게 해줌)
+    Babel : 코드를 변환해준다. (JSX로 적은 코드를 브라우저가 이해할 수 있는 형태로 변경해줌)
+      - 스크립트 추가 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+      - 기존 스크립트에 type="text/babel" 추가
+
+    화살표 함수
+      const Title = () => (
+        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+          Hello, I'm a h3
+        </h3>
+      );
+      ※ 위, 아래 같은 의미임
+      function Title () {
+        return (
+          <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+            Hello, I'm a h3
+          </h3>
+        );
+      }
+
+    컴포넌트의 첫 글자는 반드시 대문자여야 한다. 예) <Title /> <Button />
+      - 만약 소문자라면 React와 JSX는 HTML 태그라고 생각한다. 예) <title /> <button />
+ -->

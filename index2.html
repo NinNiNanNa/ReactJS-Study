@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    const root = document.getElementById("root");
+    const span = React.createElement(
+      "span",
+      { id: "sexy-span", style: { color: "red" } },
+      "Hello, I'm a span"
+    );
+    ReactDOM.render(span, root);
+  </script>
+</html>
+<!-- 
+#2.2 Our First React Element
+
+  2. React JS element를 생성하는 방법
+    - React JS는 어플리케이션이 아주 interactive하도록 만들어주는 library.
+    - react-dom은 library 또는 package. 모든 React element들을 HTML body에 둘 수 있도록 해준다.
+    - React.createElement("span", {span의 property}, “span의 내용”)
+      -> createElement의 첫번째 argument는 만들 HTML 태그 이름.
+      -> createElement의 두번째 argument는 태그의 property.(class name, id도 가능 style도 가능)
+      -> createElement의 세번째 argument는 span의 내용.
+    - ReactDOM.render() : react element를 가지고 HTML로 만들어 배치한다는 것. 즉, 사용자에게 보여준다는 의미
+      [형식] ReactDOM.render(span, span이 가야할 위치)
+      -> 그래서 보통 body에 <div id="root"></div> 만들어서 span을 root 안에 두라고 함
+    
+    ※ React JS는 우리가 해왔던 방식을 거꾸로 하고 있다!
+      - 바닐라 JS는 HTML 생성 -> Javascript에 import -> HTML 수정
+      - React JS는 모든걸 Javascript에서 생성 -> HTML에 배포
+ -->

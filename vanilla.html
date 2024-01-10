@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <span>Total clicks: 0</span>
+    <button id="btn">Click me</button>
+  </body>
+  <script>
+    let counter = 0;
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+    function handleClick() {
+      counter = counter + 1;
+      span.innerText = `Total clicks: ${counter}`;
+    }
+    button.addEventListener("click", handleClick);
+  </script>
+</html>
+<!-- 
+  [ 1단계 ] HTML애서 버튼과 버튼 클릭 횟수 표현하는 글씨 만들기
+    <span>Total clicks: 0</span>
+    <button id="btn">Click me</button>
+
+  [ 2단계 ] Javascript에서 1단계때 만든 태그 불러오기
+    const button = document.getElementById("btn");
+    const span = document.querySelector("span");
+
+  [ 3단계 ] event 감지
+    function handleClick() { }
+    button.addEventListener("click", handleClick);
+
+  [ 4단계 ] 데이터 업데이트
+    let counter = 0;
+    counter = counter + 1;
+
+  [ 5단계 ] HTML 업데이트
+    span.innerText = `Total clicks: ${counter}`;
+ -->
