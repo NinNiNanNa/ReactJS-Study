@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      // ReactDOM.render(<Container />, root);
+      render();
+    }
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+    /* 
+    const Container = () => (
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={countUp}>Click me</button>
+      </div>
+    );
+     */
+    function Container() {
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={countUp}>Click me</button>
+        </div>
+      );
+    }
+    // ReactDOM.render(<Container />, root);
+    render();
+  </script>
+</html>
+<!-- 
+#3.0 Understanding State
+
+  state : 기본적으로 데이터가 저장되는 곳
+
+  컴포넌트나 JSX에 변수를 추가하고 싶을때 "{ }" 를 사용하면 된다.
+  
+  1. render함수 추가 전
+    1) 어플리케이션이 시작될때 Container를 렌더링한다.
+    2) Container를 렌더링할때, counter는 0 / button에 이벤트리스너를 더해주고 클릭하면
+    3) countUp함수를 통해 counter를 증가시키고 Container를 리렌더링한다.
+    4) Container를 리렌더링하면 Container함수가 다시 호출하면서 counter값이 바뀐다.
+
+    ※ ReactDOM.render(<Container />, root); 가 중복이므로 render함수를 만들어 사용하면 좋다.
+
+  2. render함수 추가 후
+    1) 어플리케이션이 시작하면 counter는 0
+    2) Container 컴포넌트를 root에 담아준 render함수를 실행시키고
+    3) Container는 Total click을 가지고 있고 counter와 연결되어있다. (counter의 초기값은 0)
+    4) Container의 버튼에 이벤트리스너를 더해주고 클릭하면 countUp함수가 호출된다.
+    5) countUp함수는 counter를 증가시키고 다시 render함수를 호출한다.
+    6) render함수가 호출되면 똑같은 과정이 반복된다.
+    7) Container를 root에 담아주는 과정은 똑같지만 Container 컴포넌트는 업데이트된 counter를 가지고 있다.
+    
+    ※ 우리가 값을 바꿀때마다 다시 렌더링하는걸 잊어서는 안되므로 이 방식도 최고의 방식은 아니다!!
+       최고의 방식은 다음 강의에서 알려줄 예정!!
+
+  3. React의 위력
+    - vanilla.html과 React JS(index5.html)를 실행시키고 개발 elements 창을 띄우고 보면
+      vanilla.html 은 span태그 전체가 업데이트되는걸 확인
+      React JS(index5.html)는 UI에서 바뀐부분만 업데이트해주는걸 확인
+
+    ※ React JS는 이전에 렌더링된 컴포넌트는 어떤거였는지 확인하고 다음에 렌더링될 컴포넌트는 어떤지를 본다.
+       React JS는 다른 부분만 파악한다. 오로지 바뀐 부분만 업데이트 해주면 된다!!!
+ -->
