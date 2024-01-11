@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        // setCounter(counter + 1);
+        setCounter((current) => current + 1);
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+<!-- 
+#3.4 State Functions
+
+  [ 앱의 state를 바꾸는 2가지 방법 ]
+  1. 직접 값을 설정해주는 것
+    setCounter(777);
+
+  2. 함수 전달하기 : 이전 값을 이용해서 현재 값을 계산해 내는 것
+    setCounter((current) => current + 1);
+    - 함수의 첫번째 argument는 현재 값, 함수의 return값이 새로운 state가 됨
+    - 이 함수 안에서 current가 현재의 counter임이 보장되고,
+      current+1을 함으로서 외부에서 counter의 값이 변경되더라도 이 함수 안에서 값은 안전하게 반환될 수 있게 한다.
+
+  [ 참조문서 - setCounter(counter + 1); 와 setCounter((current) => current + 1); 차이점 ] https://yeoulcoding.tistory.com/169?category=806488
+
+ -->

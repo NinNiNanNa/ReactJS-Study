@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function App() {
+      const [amount, setAmount] = React.useState(0);
+      const [flipped, setFlipped] = React.useState(false);
+      const onChange = (event) => {
+        // console.log(event.target.value);
+        setAmount(event.target.value);
+      };
+      const reset = () => setAmount(0);
+      const onFlip = () => {
+        reset();
+        setFlipped((current) => !flipped);
+      };
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+            <input
+              value={flipped ? amount * 60 : amount}
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange}
+              disabled={flipped}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input
+              value={flipped ? amount : Math.round(amount / 60)}
+              id="hours"
+              placeholder="Hours"
+              type="number"
+              disabled={!flipped}
+              onChange={onChange}
+            />
+          </div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={onFlip}>Flip</button>
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+<!-- 
+#3.5 Inputs and State ~ #3.7 State Practice
+
+  [ unit conversion(단위 변환)앱 만들기 ]
+
+  1. JSX는 class / for 과 같이 JavaScript에서 선점된 문법 용어를 사용 못한다.
+    - class는 className으로 for은 htmlFor로 바꿔쓴다
+    
+    // React CDN Production(배포모드)
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    // React CDN Development(개발모드)
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    => production(배포모드)는 1번에 대한 검증이 없음
+    [ 참조문서 - 개발모드작동 ] https://ui.toast.com/weekly-pick/ko_20191212
+
+  2. ReactJS에서 form을 다루는 방법
+    - input은 uncontrolled라고 알려져있다. = input의 value는 우리가 통제할 수 없다
+    - event를 통해서 event.target.value 로 input의 value값을 구할 수 있다!
+
+  3. 단위 변환을 뒤집어보는 함수(flip function) 만들기
+    const [flipped, setFlipped] = React.useState(false);
+    const onFlip = () => setFlipped((current) => !flipped);
+    - state 값으로 input을 enabled할지 disabled할지 결정할 수 있음
+    - flipped의 default값을 false로 설정했음
+
+    disabled={flipped === false} // disabled={!flipped}
+      - flipped가 false라면 disabled는 true가 되어야함
+    disabled={flipped === true} // disabled={flipped}
+      - flipped가 true라면 disabled는 false가 되어야함
+
+    1) flipped는 단순히 true 혹은 false인 변수
+    2) flip버튼을 누르면 onFlip함수가 실행
+    3) onFlip함수는 현재 값을 받아서 그 반대의 값을 반환함
+       즉, 만약 현재 값이 true면 false를 반환하고 반대로 false면 true를 반환
+
+  4. Hours 에도 Minutes 같은기능(분->시로 변환) 만들어주기
+    - Hours input의 chage event 리스닝하기(기존에 있는 onChange함수 사용)
+      onChange={onChange}
+    - 삼항연산자(if문을 인라인형태로 작성한 것)를 통해 Hours input과 Minutes input의 value값 설정
+      [삼항연산자 형식] condition ? exprIfTrue : exprIfFalse;
+      // Minutes input
+      value={flipped ? amount * 60 : amount}
+      // Hours input
+      value={flipped ? amount : Math.round(amount / 60)}
+
+ -->
