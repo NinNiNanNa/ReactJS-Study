@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, big }) {
+      console.log(text, big);
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: big ? 20 : 16,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    function App() {
+      return (
+        <div>
+          {/* Btn({text: "Save Changes", big: true}) */}
+          <Btn text="Save Changes" big={true} />
+          <Btn text="Continue" big={false} />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+<!-- 
+#4.0 Props
+
+  - 단위변환 예제에서 자식 컴포넌트(MinutesToHours, KmToMiles)는 부모 컴포넌트(App)의 데이터를 필요하지 않음
+    => 그러므로 자식 컴포넌트(MinutesToHours, KmToMiles)는 독립적으로 존재할 수 있음
+
+  [ 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 보내는 예시 시작! ]
+  1. Props
+    : 부모 컴포넌트로부터 자식 컴포넌트에 데이터를 보낼 수 있게 해주는 방법
+    [ 참조문서 - Components와 Props ] https://ko.legacy.reactjs.org/docs/components-and-props.html
+
+  2. 컴포넌트는 "어떤 JSX를 반환하는 함수"이다.
+
+  3. ReactJS에서 Styles를 바꾸는 방법
+    - style property(속성)을 사용
+      style={{ 자바스크립트 object형식으로 작성 }}
+
+  4. Styles 재사용 방법
+    - 3번 같은 방법으로 동일한 스타일을 가진 여러버튼을 생성하면 동일한 코드가 길어진다.
+      => 동일한 스타일을 가진 하나의 컴포넌트를 만들어 버튼의 글자만 변경할 수 있게 만들어주기!!(컴포넌트 재사용)
+    - 내가 만들고 사용하는 모든 컴포넌트들은 function Btn() -> 괄호로 argument(인자)를 받는다.
+      보통은 props라고 부른다. Btn으로부터 전달받는 properties(속성)이다.
+
+      <Btn text="Save Changes" /> 와 Btn({text: "Save Changes"})은 같은 뜻이다.
+      // ReactJS가 실제로 하는 작업은 Btn() 함수를 호출해서 우리가 넣어둔 모든 것들을 첫 번째 인자(props)로 넣어준다.
+
+      function Btn(props) {}
+      // 두번째 인자는 없다. props는 첫번째이자 유일한 인자!! 
+      // props는 오브젝트이다. <Btn text="Save Changes" big="yes" /> 여기서 보낸 모든 것들을 갖는 오브젝트!
+         => props오브젝트는 text라는 이름의 key를 갖고 있다. {props.text}
+              function Btn(props) {
+                console.log(props);
+                return (
+                  <button
+                    style={{
+                      backgroundColor: "tomato",
+                      color: "white",
+                      padding: "10px 20px",
+                      border: 0,
+                      borderRadius: 10,
+                    }}
+                  >
+                    {props.text}
+                  </button>
+                );
+              }
+
+    - Shortcut(지름길)
+      function Btn({ text }) {}
+      // props는 오브젝트이기 때문에 {}중괄호 안에 key를 적어주면 된다.(property를 오브젝트로부터 꺼낸다.)
+      // prop을 더 많은 곳에 사용할 수 있다.
+              function Btn({ text, big }) {
+                console.log(text, big);
+                return (
+                  <button
+                    style={{
+                      backgroundColor: "tomato",
+                      color: "white",
+                      padding: "10px 20px",
+                      border: 0,
+                      borderRadius: 10,
+                      fontSize: big ? 20 : 16,
+                    }}
+                  >
+                    {text}
+                  </button>
+                );
+              }
+
+  ※ 부모에 props를 사용하면 자식 컴포넌트(함수)의 인자로 객체가 들어가게 된다.
+     하나의 버튼을 만들어서 props를 이용해 버튼의 스타일을 관리해서 재사용 할 수 있게된다.
+ -->
