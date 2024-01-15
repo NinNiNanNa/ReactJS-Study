@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Btn({ text, changeValue }) {
+      console.log(text, "was rendered");
+      return (
+        <button
+          onClick={changeValue}
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    const MemorizedBtn = React.memo(Btn);
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        <div>
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text="Continue" />
+        </div>
+      );
+    }
+    const root = document.getElementById("root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
+<!-- 
+#4.1 Memo
+
+  1. props에 function도 보낼 수 있다. (이전 강의에선 String, true/false를 보냄)
+    - 예를 들어 Save Changes버튼을 누르면 Revert Changes로 text가 변경되는 버튼을 만들때
+      <Btn text={value} onClick={changeValue} />
+      1) "onClick={changeValue}" 이것은 이벤트 리스너가 아니고 Btn으로 전달되는 prop일 뿐이다.
+      => HTML 요소에 넣는 "onClick={}"은 이벤트 리스너가 맞지만 커스텀 컴포넌트에 넣는것은 이벤트 리스너가 아니라 prop이다.
+      2) prop으로 전달되는것은 자동적으로 return안으로 들어가지 않는다. 내가 써줘야만 하는것!!
+        현재 코드는 button 태그 하나만 있지만 div,span태그를 넣으면 prop으로 전달받은 changeValue는
+        어떤 태그의 클릭이벤트인지 모르므로 해당 태그에 직접 작성해줘야한다.
+
+      🙀혼란을 방지하기위해 onClick -> changeValue 으로 변경함
+        <Btn text={value} changeValue={changeValue} />
+    
+    ※부모의 state를 바꾸는 함수를 만들었고, 부모 컴포넌트에서 그 함수를 prop으로 보내면 자식 컴포넌트에서 그 함수가 실행된다.
+
+  2. 불필요한 리렌더링은 React.memo()로 관리할 수 있다.
+    - 부모에 어떤 state라도 변경이 있으면 모든 자식들은 리렌더링된다. 이점은 추후에 어플리케이션이 느려지는 원인이 될수도 있다.
+    - 변경이없는 "Continue버튼" 도  "Save Changes 버튼"을 클릭하면 다시 리렌더링이되고 있다.
+      이런 불필요한 리렌더링을 막기위해 prop의 변경이 일어난 부분만 렌더링해주는 React.memo()를 사용한다.
+    - React.memo() : React는 컴포넌트를 렌더링하고 결과를 메모이징(Memoizing)한다.
+                     그리고 다음 렌더링이 일어날 때 props가 같다면, React는 메모이징(Memoizing)된 내용을 재사용한다.
+ -->
