@@ -12,7 +12,7 @@ import "./styles.css";
 
 ### `Button.js`
 
-```
+```ruby
   function Button({ text }) {
     return (
       <button style={{ backgroundColor: "tomato", color: "white" }}>
@@ -27,8 +27,8 @@ import "./styles.css";
 : CSS를 사용할때 클래스 이름을 고유한 값으로 자동으로 만들어서 컴포넌트 스타일 클래스 이름이 중첩되는 현상을 방지해주는 기술
 
 - 파일명
-  컴포넌트명.module.css
-  ex) src/Button.module.css
+  - 컴포넌트명.module.css
+    ex) src/Button.module.css
 - 적용법
   - 해당 컴포넌트상단에 import 할때 앞에 이름을 지정
     ```
