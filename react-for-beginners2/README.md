@@ -12,14 +12,14 @@ import "./styles.css";
 
 ### `Button.js`
 
-```ruby
-  function Button({ text }) {
-    return (
-      <button style={{ backgroundColor: "tomato", color: "white" }}>
-        {text}
-      </button>
-    );
-  }
+```javascript
+function Button({ text }) {
+  return (
+    <button style={{ backgroundColor: "tomato", color: "white" }}>
+      {text}
+    </button>
+  );
+}
 ```
 
 ## 3. CSS-Module
@@ -45,9 +45,10 @@ import "./styles.css";
     <button className={`${styles.btn} ${styles.font}`}>{text}</button>
     ```
 
-= 클래스명이 같아도 HTML의 클래스명은 랜덤 방식으로 생성된다.
+= 클래스명이 같아도 HTML의 클래스명은 랜덤 방식으로 생성된다.  
+![랜덤한 클래스명](./public/1.PNG)
 
-✨ CSS Module을 이용하면 클래스명이 충돌하는 단점을 극복할 수 있다.
+✨ CSS Module을 이용하면 클래스명이 충돌하는 단점을 극복할 수 있다.  
 ✨ CSS Module은 컴포넌트 단위로 스타일을 적용할때 유용하다.
 
 [참고문서] <https://react.vlpt.us/styling/02-css-module.html?q=>
