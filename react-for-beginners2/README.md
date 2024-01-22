@@ -28,7 +28,9 @@ import "./styles.css";
 
 - 파일명
   - 컴포넌트명.module.css
-    ex) src/Button.module.css
+    ```
+    src/Button.module.css
+    ```
 - 적용법
   - 해당 컴포넌트상단에 import 할때 앞에 이름을 지정
     ```
