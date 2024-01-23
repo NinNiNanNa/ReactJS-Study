@@ -26,9 +26,9 @@ import React, { useEffect } from 'react';
   - 첫번째 argument(function)는 수행하고자 하는 작업
   - 두번째 argument(deps)는 배열 형태이며, 배열 안에는 검사하고자 하는 특정 값 or 빈 배열
 
-### 1.3. deps에 빈배열
+### 1.3. componentDidMount
 
-처음 나타났을때 실행
+컴포넌트가 mount 됐을때 (처음 나타났을때 실행)
 
 ```javascript
 useEffect(() => {
@@ -39,9 +39,9 @@ useEffect(() => {
 - 컴포넌트가 화면에 가장 처음 렌더링 될때 한번만 실행하고 싶다면 deps 위치에 빈 배열을 넣어준다.
 - 만약 배열을 생략한다면 리렌더링 될때마다 실행된다.
 
-### 1.4. deps에 특정 값이 있는 경우
+### 1.4. componentDidUpdate
 
-특정 porps, state가 바뀔때 실행
+컴포넌트가 update 될때 (특정 porps, state가 바뀔때 실행)
 
 ```javascript
 useEffect(() => {
@@ -50,6 +50,7 @@ useEffect(() => {
 ```
 
 - 특정 값이 업데이트 될때 실행하고 싶다면, deps 위치의 배열안에 검사하고 싶은 값을 넣어준다.
+  (의존 값이 들어있는 배열 deps라고도 한다. <span style="background-color:#fff5b1"> dependency </span> 를 의미)
 
 ## 2. `useEffect()`와 `useMemo()`의 차이점은?
 
