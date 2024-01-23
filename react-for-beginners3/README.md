@@ -50,9 +50,7 @@ useEffect(() => {
 ```
 
 - 특정 값이 업데이트 될때 실행하고 싶다면, deps 위치의 배열안에 검사하고 싶은 값을 넣어준다.   
-  (의존 값이 들어있는 배열 deps라고도 한다.
-  <span style="background-color:#fff5b1"> dependency </span>
-  를 의미)
+  (의존 값이 들어있는 배열 deps라고도 한다. dependency 를 의미)
 
 ## 2. `useEffect()`와 `useMemo()`의 차이점은?
 
