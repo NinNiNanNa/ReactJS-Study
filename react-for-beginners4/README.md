@@ -4,7 +4,7 @@
 
 : `useEffect()`에서 첫번째 argument로 넣은 함수의 **return 함수**이다.
 
-### 컴포넌트가 사라질때(unmount 시점), 특정 값이 변경되기 직전(deps update 직전)에 실행할 작업을 지정할 수 있다.
+**컴포넌트가 사라질때(unmount 시점), 특정 값이 변경되기 직전(deps update 직전)에 실행할 작업을 지정할 수 있다.**
 
 ```javascript
 useEffect(() => {
