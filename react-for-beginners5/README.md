@@ -95,14 +95,14 @@ const [toDos, setToDos] = useState([]);
   // 두가지 모두 같은 의미이다.
   ```
 
-- 새로운 배열 return 하기(State는 항상 새로운 거여야 함)
+  - 새로운 배열 return 하기(State는 항상 새로운 거여야 함)
 
-```javascript
-setToDos((currentArray) => []);
-```
+  ```javascript
+  setToDos((currentArray) => []);
+  ```
 
-- 새로운 배열은 State에 있는 toDo와 모든 이전의 toDos(...currentArray)를 갖는다.
-  ![배열안에 element추가](./public/1.PNG)
+  - 새로운 배열은 State에 있는 toDo와 모든 이전의 toDos(...currentArray)를 갖는다.
+    ![배열안에 element추가](./public/1.PNG)
 
 ```javascript
 const { useState } = require("react");
