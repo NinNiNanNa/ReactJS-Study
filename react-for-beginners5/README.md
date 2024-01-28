@@ -169,7 +169,7 @@ export default App;
 : 하나의 array에 있는 item을 내가 원하는 무엇이든지로 바꿔주는 역할  
  => 예전 array를 가져와서 새로운 array로 return
 
-[참고문서]<https://codingeverybody.kr/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-map-%ED%95%A8%EC%88%98/>
+[참고문서] <https://codingeverybody.kr/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-map-%ED%95%A8%EC%88%98/>
 
 - `( )` 안에 함수를 넣을 수 있는데 배열의 모든 item에 대해 실행된다.  
   즉 배열에 6개의 item이 있다면 6번 함수가 실행된다.  
