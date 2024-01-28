@@ -1,4 +1,4 @@
-# #7.0 To Do List
+# #7.0 ~ #7.1 To Do List
 
 ## 1. input생성하고 form 제어하기
 
@@ -103,6 +103,32 @@ const [toDos, setToDos] = useState([]);
 
   - 새로운 배열은 State에 있는 toDo와 모든 이전의 toDos(...currentArray)를 갖는다.
     ![배열안에 element추가](./public/1.PNG)
+    - `...`을 써서 `currentArray`배열에 `toDo`를 추가 시켜준다.
+    - 어플리케이션이 시작될 때는 `비어있는 배열`을 가진다.  
+      이유❓ 기본값을 비어있는 배열로 선언했기때문에
+      ```javascript
+      const [toDos, setToDos] = useState([]);
+      ```
+    - 첫번째 `toDo로 "Hello"를 입력`할때 `비어있는 배열`을 받아온다.  
+      (새로운 `toDos`가 `input을 통해 작성한 toDo`와 아무것도 들어있지 않은 `빈 배열의 element`가 더해지게 된다.)
+      ```javascript
+      setToDos(([]) => ["Hello", ...[]]);
+      // toDo와 []이 합쳐져 결국엔
+      setToDos(([]) => ["Hello"]);
+      ```
+    - 두번째 `toDo로 "bye bye"를 입력`할때 `"Hello"를 가진 배열`을 받아온다.
+      ```javascript
+      setToDos((["Hello"]) => ["bye bye", ...["Hello"]]);
+      // toDo와 currentArray가 합쳐져 결국엔
+      setToDos((["Hello"]) => ["bye bye", "Hello"]);
+      ```
+    - 세번째 `toDo로 "Good"을 입력`할때 `"Hello"와 "bye bye"를 가진 배열`을 받아온다.
+      ```javascript
+      setToDos((["bye bye", "Hello"]) => ["Good", ...["bye bye", "Hello"]]);
+      // toDo와 currentArray가 합쳐져 결국엔
+      setToDos((["bye bye", "Hello"]) => ["Good", "bye bye", "Hello"]);
+      ```
+      ‼ 이런식으로 계속 To Do List가 증가된다.
 
 ```javascript
 const { useState } = require("react");
