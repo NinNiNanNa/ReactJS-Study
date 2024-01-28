@@ -173,10 +173,10 @@ export default App;
   즉 배열에 6개의 item이 있다면 6번 함수가 실행된다.  
   그리고 그 함수로부터 내가 return한 값은 새로운 배열에 들어가게 한다.  
   ![map()예시 이미지1](./public/2.png)
-- 다만 기존의 배열에 접근할 수 없다.
-  그러나 `함수의 첫번째 argument로 현재의 item`을 가져올 수 있다.
-  item말고 원하는 변수명을 넣어도 된다.
-  ![map()예시 이미지2](./public/3.png)
+- 다만 기존의 배열에 접근할 수 없다.  
+  그러나 `함수의 첫번째 argument로 현재의 item`을 가져올 수 있다.  
+  item말고 원하는 변수명을 넣어도 된다.  
+  ![map()예시 이미지2](./public/3.png)  
   ![map()예시 이미지3](./public/4.png)
 
 ```javascript
@@ -187,13 +187,14 @@ export default App;
 </ul>
 ```
 
+![경고이미지](./public/5.png)
+
 ```
 [🚨주의] 위 코드만 작성할 경우 경고발생!
-![경고이미지](./public/5.png)
 react는 기본적으로 list에 있는 모든 item들을 인식하기 때문에 key라는 prop을 넣어 고유하게 만들어줘야한다.
 ```
 
-- map의 첫번째 argument는 value, 두번째는 index 를 활용해 key prop를 설정한다.
+- map의 첫번째 argument는 value, 두번째는 index 를 활용해 key prop을 설정한다.
   ![map()](./public/6.png)
 
 ```javascript
