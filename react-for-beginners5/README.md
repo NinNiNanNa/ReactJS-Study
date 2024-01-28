@@ -83,6 +83,8 @@ const [toDos, setToDos] = useState([]);
 - 생성한 배열에 element 추가하는 방법(일반 자바스크립트 => toDos.push)
 
   - `setToDos()`에 함수를 통해 직전의 값 받기
+    - 함수를 보낼 때 ReactJS는 함수의 첫번째 argument로 `현재 State`를 보낸다.
+    - `현재 State`를 통해 계산하거나 새로운 State를 만드는데 사용할 수 있게 된다.
 
   ```javascript
   // 1. 화살표함수
@@ -158,4 +160,46 @@ function App() {
   );
 }
 export default App;
+```
+
+## 3. 배열로부터 동일한 컴포넌트에 있는 많은 것들을 render 하기
+
+### `map()`
+
+: 하나의 array에 있는 item을 내가 원하는 무엇이든지로 바꿔주는 역할  
+ => 예전 array를 가져와서 새로운 array로 return
+
+- `( )` 안에 함수를 넣을 수 있는데 배열의 모든 item에 대해 실행된다.  
+  즉 배열에 6개의 item이 있다면 6번 함수가 실행된다.  
+  그리고 그 함수로부터 내가 return한 값은 새로운 배열에 들어가게 한다.  
+  ![map()예시 이미지1](./public/2.png)
+- 다만 기존의 배열에 접근할 수 없다.
+  그러나 `함수의 첫번째 argument로 현재의 item`을 가져올 수 있다.
+  item말고 원하는 변수명을 넣어도 된다.
+  ![map()예시 이미지2](./public/3.png)
+  ![map()예시 이미지3](./public/4.png)
+
+```javascript
+<ul>
+  {toDos.map((item) => (
+    <li>{item}</li>
+  ))}
+</ul>
+```
+
+```
+[🚨주의] 위 코드만 작성할 경우 경고발생!
+![경고이미지](./public/5.png)
+react는 기본적으로 list에 있는 모든 item들을 인식하기 때문에 key라는 prop을 넣어 고유하게 만들어줘야한다.
+```
+
+- map의 첫번째 argument는 value, 두번째는 index 를 활용해 key prop를 설정한다.
+  ![map()](./public/6.png)
+
+```javascript
+<ul>
+  {toDos.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))}
+</ul>
 ```
