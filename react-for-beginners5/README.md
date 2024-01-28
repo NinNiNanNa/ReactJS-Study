@@ -113,22 +113,22 @@ const [toDos, setToDos] = useState([]);
       (새로운 `toDos`가 `input을 통해 작성한 toDo`와 아무것도 들어있지 않은 `빈 배열의 element`가 더해지게 된다.)
       ```javascript
       setToDos(([]) => ["Hello", ...[]]);
-      // toDo와 []이 합쳐져 결국엔
+      // 새로입력한 toDo와 []이 합쳐져 결국엔
       setToDos(([]) => ["Hello"]);
       ```
     - 두번째 `toDo로 "bye bye"를 입력`할때 `"Hello"를 가진 배열`을 받아온다.
       ```javascript
       setToDos((["Hello"]) => ["bye bye", ...["Hello"]]);
-      // toDo와 currentArray가 합쳐져 결국엔
+      // 새로입력한 toDo와 기존 배열과 합쳐져 결국엔
       setToDos((["Hello"]) => ["bye bye", "Hello"]);
       ```
     - 세번째 `toDo로 "Good"을 입력`할때 `"Hello"와 "bye bye"를 가진 배열`을 받아온다.
       ```javascript
       setToDos((["bye bye", "Hello"]) => ["Good", ...["bye bye", "Hello"]]);
-      // toDo와 currentArray가 합쳐져 결국엔
+      // 새로입력한 toDo와 기존 배열과 합쳐져 결국엔
       setToDos((["bye bye", "Hello"]) => ["Good", "bye bye", "Hello"]);
       ```
-      ‼ 이런식으로 계속 To Do List가 증가된다.
+      ❗❗ 이런식으로 계속 To Do List가 증가된다.
 
 ```javascript
 const { useState } = require("react");
