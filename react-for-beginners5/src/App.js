@@ -15,6 +15,7 @@ function App() {
       // 함수 종료
       return;
     }
+    // 현재 toDos를 받아와서 새로운 toDo의 배열로 return
     setToDos((currentArray) => [toDo, ...currentArray]);
     // input 비워주기
     setToDo("");
@@ -32,6 +33,12 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
