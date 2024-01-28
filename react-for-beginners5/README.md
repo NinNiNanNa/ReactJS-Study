@@ -187,12 +187,12 @@ export default App;
 </ul>
 ```
 
-![경고이미지](./public/5.png)
-
 ```
 [🚨주의] 위 코드만 작성할 경우 경고발생!
 react는 기본적으로 list에 있는 모든 item들을 인식하기 때문에 key라는 prop을 넣어 고유하게 만들어줘야한다.
 ```
+
+![경고이미지](./public/5.png)
 
 - map의 첫번째 argument는 value, 두번째는 index 를 활용해 key prop을 설정한다.
   ![map()](./public/6.png)
