@@ -21,7 +21,7 @@
   const [coins, setCoins] = useState([]);
   ```
 
-  - 기본값 [] (빈 배열)
+  - 기본값 [ ] (빈 배열)
   - 기본값으로 빈 배열을 주지 않으면 추후 length(길이) 출력 못함  
     undefined는 length(길이)를 가지고 있지 않기때문이다.
 
