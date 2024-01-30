@@ -32,7 +32,7 @@
 
 - 컴포넌트가 가장 처음으로 render되었을때 어떠한 코드를 딱 한번 실행시키고 싶음
 
-  - useEffect() 활용  
+  - `useEffect()` 활용  
     이 Effect는 한번만 사용하고 싶기때문에 어떤것에도 의존하지 않고 비워둘 거임(빈 배열)
 
     ```javascript
@@ -58,7 +58,7 @@
 - 요청(request)해서 응답(response) 받은 json 추출
 
   - 첫번째 then()을 사용하여 response를 받아 response.json()을 return
-  - 두번째 then()을 써서 변환한 json을 콘솔에 출력
+  - 두번째 then()을 써서 변환한 json을 콘솔에 출력(json data 구조 확인용)
 
   ```javascript
   useEffect(() => {
@@ -72,7 +72,7 @@
 
 ## 3. 추출한 data를 컴포넌트에 출력하기
 
-- data확인을 위해 콘솔에 출력한 json data를 coins에 넣기
+- data구조 확인을 위해 콘솔에 출력한 json data를 coins에 넣기
 
 ```javascript
 useEffect(() => {
