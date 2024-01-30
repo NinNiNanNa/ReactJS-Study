@@ -30,7 +30,7 @@
 > API  
 > https://api.coinpaprika.com/v1/tickers
 
-- 컴포넌트가 가장 처음으로 render되었을때 이 함수를 즉시 실행시키고 싶음
+- 컴포넌트가 가장 처음으로 render되었을때 어떠한 코드를 딱 한번 실행시키고 싶음
 
   - useEffect() 활용  
     이 Effect는 한번만 사용하고 싶기때문에 어떤것에도 의존하지 않고 비워둘 거임(빈 배열)
