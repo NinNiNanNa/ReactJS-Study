@@ -57,8 +57,8 @@
 
 - 요청(request)해서 응답(response) 받은 json 추출
 
-  - 첫번째 then()을 사용하여 response를 받아 response.json()을 return
-  - 두번째 then()을 써서 변환한 json을 콘솔에 출력(json data 구조 확인용)
+  - `첫번째 then()`을 사용하여 response를 받아 response.json()을 return
+  - `두번째 then()`을 써서 변환한 json을 콘솔에 출력(json data 구조 확인용)
 
   ```javascript
   useEffect(() => {
