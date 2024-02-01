@@ -1,4 +1,4 @@
-# #7.3 Movie App
+# #7.3 ~ #7.4 Movie App
 
 영화 소개하기  
 : 평점 8.5이상, 연도별로 영화 정보를 제공하고 더 많은 것을 찾아볼 수 있도록 앱에서 다른 곳으로 연결시켜주기  
@@ -72,6 +72,7 @@
 >
 > - `async`는 함수에서 비동기 처리를 위한 promise 동작을 한다는 것을 명시한다.
 > - `await`는 호출되는 함수가 적절한 결과를 변환할 때까지 기다리도록 동작한다.
+>   [참고문서] <https://velog.io/@combi_jihoon/React-Promise-asyncawait>
 
 - `async`와 `await` 사용1
 
@@ -149,7 +150,7 @@ return (
       <div>
         {movies.map((movie) => (
           <div key={movie.id}>
-            <img src={movie.medium_cover_image} alt={`커버이미지${movie.id}`} />
+            <img src={movie.medium_cover_image} alt={movie.title} />
             <h2>{movie.title}</h2>
             <p>{movie.summary}</p>
             <ul>
@@ -163,4 +164,83 @@ return (
     )}
   </div>
 );
+```
+
+## 4. App.js 코드정리
+
+- Movie 컴포넌트 생성 `Movie.js`
+
+```javascript
+function Movie() {
+  return null;
+}
+
+export default Movie;
+```
+
+- App.js 에서 movie 정보 출력 부분 Movie.js 로 옮겨주기
+  - Movie.js 에서 부모 컴포넌트(App)로부터 받아올 정보들을 prop에 작성하기
+  - App.js 에서 Movie 컴포넌트 import하고 render해주기
+  - App.js 에서 render한 Movie 컴포넌트에 prop 정의 해주기
+  - App.js 에서 render한 Movie 컴포넌트에 key값 부여하기
+  - Movie.js 에서 어떤 props를 가지고 있는지 정의해주기(PropType)
+
+```javascript
+// App.js
+import { useEffect, useState } from "react";
+import Movie from "./Movie";
+
+function App() {
+  // 윗 코드 생략 ...
+  return (
+    <div>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          {movies.map((movie) => (
+            <Movie
+              key={movie.id}
+              coverImg={movie.medium_cover_image}
+              title={movie.title}
+              summary={movie.summary}
+              genres={movie.genres}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
+
+```javascript
+// Movie.js
+import PropType from "prop-types";
+
+function Movie({ coverImg, title, summary, genres }) {
+  return (
+    <div>
+      <img src={coverImg} alt={title} />
+      <h2>{title}</h2>
+      <p>{summary}</p>
+      <ul>
+        {genres.map((g) => (
+          <li key={g}>{g}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+Movie.propType = {
+  coverImg: PropType.string.isRequired,
+  title: PropType.string.isRequired,
+  summary: PropType.string.isRequired,
+  genres: PropType.arrayOf(PropType.string).isRequired,
+};
+
+export default Movie;
 ```
