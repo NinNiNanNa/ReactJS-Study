@@ -6,9 +6,9 @@ React.js 앱에서 페이지를 전환하는 방법
 
 - React Router : 페이지 전환
 
-  > 설치
-  > `npm install react-router-dom`
-  > 이번 프로젝트는 5버전으로 설치함
+  > 설치  
+  > `npm install react-router-dom`  
+  > 이번 프로젝트는 5버전으로 설치함  
   > `npm i react-router-dom@5.3.0`
 
 - src 폴더에 routes와 components 라는 폴더 생성
