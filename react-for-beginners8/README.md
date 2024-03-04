@@ -229,3 +229,58 @@ export default Detail;
 <img src="./public/3.png" width="500">
 
 ### 영화 상세정보 추가해서 사이트 마무리 지어보기!!!
+
+## 6. GitHub Pages 배포
+
+### 1. React 프로젝트 배포하기 전에 해야할 것
+
+1. 배포하고자 하는 프로젝트 repository가 public으로 되어 있는지 확인
+2. package.json 파일에 다음을 추가
+
+   ```json
+   "homepage": "https://GitHub 계정이름.github.io/저장소 이름",
+   ```
+
+3. 프로젝트에서 React Router를 사용하고 있다면 추가적으로 해야하는 과정
+
+   - `BrowserRouter`를 사용하고 있는 파일에서 다음과 같이 basename 속성을 추가
+
+   ```javascript
+   // PUBLIC_URL 은 package.json에서 설정한 homepage URL이 적용
+   <BrowserRouter basename={process.env.PUBLIC_URL}>
+     <App />
+   </BrowserRouter>
+   ```
+
+### 2. React 프로젝트 build
+
+> #### gh-pages 패키지
+>
+> [ 공식문서 - gh-pages ](https://create-react-app.dev/docs/deployment/#github-pages)  
+> &nbsp;
+
+1. gh-pages 패키지 설치
+
+   ```
+   npm i gh-pages
+   ```
+
+2. package.json 파일의 `scripts` 안에 다음 내용을 추가
+
+   ```json
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
+   ```
+
+3. 다음 명령어를 통해 build 과정과 배포 과정을 한번에 하기
+   - 프로젝트를 수정하고 다시 배포할때도 다음 명령어 입력
+   ```
+   npm run deploy
+   ```
+
+### 3. 배포 확인
+
+- Settings > Pages로 들어가서 Branch가 gh-pages로 되어 있는지 확인
+- 배포에 몇 분정도 시간이 걸리기 때문에 조금 기다렸다가 사이트 주소로 들어가서 확인
+
+  <img src="./public/4.png"/>
