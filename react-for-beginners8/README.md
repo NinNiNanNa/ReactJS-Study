@@ -246,6 +246,8 @@ export default Detail;
    - `BrowserRouter`를 사용하고 있는 파일에서 다음과 같이 basename 속성을 추가
 
    ```javascript
+   // index.js
+
    // PUBLIC_URL 은 package.json에서 설정한 homepage URL이 적용
    <BrowserRouter basename={process.env.PUBLIC_URL}>
      <App />
