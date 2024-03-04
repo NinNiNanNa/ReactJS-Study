@@ -228,7 +228,7 @@ export default Detail;
 
 <img src="./public/3.png" width="500">
 
-### 영화 상세정보 추가해서 사이트 마무리 지어보기!!!
+### [영화 상세정보 추가해서 사이트 마무리 지어보기!!!](https://github.com/NinNiNanNa/Movie-List)
 
 ## 6. GitHub Pages 배포
 
